@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+//SPAs with Multiple Pages
+///React Router BitCoin PriceFinder
+    // Purpose of this lesson is to Build A Crypto Price Discovery App and learn
 
-function App() {
+    // How to setup react router
+    // How to create Router, Route, Link and Routes components
+    // How to pass router props
+    // How to use URL Params
+
+    import React from 'react'
+    
+//Import route and our components
+import { Route, Routes } from "react-router-dom";
+import Currencies from "./pages/Currencies";
+import Main from "./pages/Main";
+import Price from "./pages/Price";
+import Nav from "./components/Nav"
+
+     function App () {
+  // We will use the Route component to specify each route
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Nav />
+    <Routes>
+      <Route path="/" element={<Main/>}/>
+      <Route path="/currencies" element={<Currencies/>}/>
+      <Route path="/price/:symbol" element={<Price/>}/>
+    </Routes>
     </div>
   );
 }
 
-export default App;
+//The :symbol part is a URL Param, a variable in the url. Whatever is in that spot in the path will be accessible by using the useParams hook.
+
+    export default App
